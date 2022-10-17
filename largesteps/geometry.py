@@ -80,7 +80,7 @@ def laplacian_uniform(verts, faces):
     ii = faces[:, [1, 2, 0]].flatten()
     jj = faces[:, [2, 0, 1]].flatten()
     adj = torch.stack([torch.cat([ii, jj]), torch.cat([jj, ii])], dim=0).unique(dim=1)
-    adj_values = torch.ones(adj.shape[1], device='cuda', dtype=torch.float)
+    adj_values = torch.ones(adj.shape[1], device=verts.device, dtype=torch.float)
 
     # Diagonal indices
     diag_idx = adj[0]
