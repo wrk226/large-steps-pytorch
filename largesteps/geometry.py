@@ -122,8 +122,8 @@ def compute_matrix(verts, faces, lambda_, alpha=None, cotan=False):
     else:
         L = laplacian_uniform(verts, faces)
 
-    idx = torch.arange(verts.shape[0], dtype=torch.long, device='cuda')
-    eye = torch.sparse_coo_tensor(torch.stack((idx, idx), dim=0), torch.ones(verts.shape[0], dtype=torch.float, device='cuda'), (verts.shape[0], verts.shape[0]))
+    idx = torch.arange(verts.shape[0], dtype=torch.long, device=verts.device)
+    eye = torch.sparse_coo_tensor(torch.stack((idx, idx), dim=0), torch.ones(verts.shape[0], dtype=torch.float, device=verts.device), (verts.shape[0], verts.shape[0]))
     if alpha is None:
         M = torch.add(eye, lambda_*L) # M = I + lambda_ * L
     else:
