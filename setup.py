@@ -3,7 +3,7 @@ from setuptools import setup
 # read the contents of your README file (https://packaging.python.org/en/latest/guides/making-a-pypi-friendly-readme/)
 from pathlib import Path
 this_directory = Path(__file__).parent
-readme = (this_directory / "README.md").read_text()
+readme = ""#(this_directory / "README.md").read_text()
 
 setup(
     name='largesteps',
